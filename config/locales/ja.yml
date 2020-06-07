@@ -1,0 +1,15 @@
+ja:
+  time:
+    formats:
+      default: "%H:%M:%S"
+  date:
+    formats:
+      default: "%m/%d"
+  activerecord:
+    models:
+      record: 記録
+    attributes:
+      record:
+        run_day: 日付
+        run_distance: 距離
+    

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Running</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Ravi+Prakash" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/earlyaccess/kokoro.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class='header'>
+        <p>ランニング記録</p>
+    </div>
+    <%= yield %>
+  </body>
+</html>

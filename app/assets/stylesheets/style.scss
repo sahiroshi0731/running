@@ -1,0 +1,85 @@
+  
+$base: #f5fffa; /*基本色*/
+
+/*ボタン*/
+.btn-square-so-pop {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  margin: 10px 50px 0px 20px;
+  text-decoration: none;
+  color: #FFF;
+  background: #CCCCFF;/*色*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+  font-weight: bold;
+  border: solid 2px #d27d00;/*線色*/
+}
+
+.btn-square-so-pop:active {
+  /*押したとき*/
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
+
+/*全体*/
+body {
+  background: $base;
+}
+
+/*ヘッダー*/
+.header {
+  height: 100px;
+  padding: 10px 50px 30px 20px;
+  margin: 10px 50px 0px 30px;
+  color: #008b8b;
+  background: #faf0e6;
+  border-bottom: solid 6px #fafee2;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 9px;
+}
+.header p {
+    margin: 0; 
+    padding: 0;
+    font-size: 2.4em;
+    font-family: "ヒラギノ丸ゴ Pro W4"; 
+}
+/*メッセージ*/
+.notice {
+  padding: 10px 50px 30px 20px;
+  margin: 10px 50px 0px 20px;
+}
+.topic {
+  padding: 10px 50px 30px 20px;
+  margin: 0px 50px 0px 0px;
+  color: #FF0000;
+}
+/*一覧*/
+.list {
+  padding: 10px 50px 30px 20px;
+  margin: 0px 50px 0px 0px;
+}
+.list td,th {
+  padding: 10px 20px;
+}
+
+.detail {
+  padding: 10px 50px 30px 20px;
+  margin: 10px 50px 0px 30px;
+  background: #D7EEFF;
+  border-radius: 9px;
+  p {
+    display: inline-block;
+  }
+  .title {
+  font-family: "ヒラギノ丸ゴ Pro W4"; 
+  font-style:oblique;
+  color: #75A9FF;
+  font-size: 2.4em;
+  }
+  .article {
+    padding: 10px 50px 30px 0px;
+    margin: 20px 50px 0px 0px;
+    font-family: "ヒラギノ丸ゴ Pro W4";
+ 
+  }
+}

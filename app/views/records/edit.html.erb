@@ -1,0 +1,36 @@
+<div><%= notice %></div>
+<h1>編集画面</h1>
+<% if @record.errors.present? %>
+  <ul>
+    入力エラー！！
+    <% @record.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>   
+
+
+<%= form_for @record do |f| %>
+  <p>
+    <%= f.label(:run_day,"日付") %></br>
+    <%= f.date_field(:run_day) %>
+  </p>
+  <p>
+    <%= f.label(:run_title, "タイトル") %></br>
+    <%= f.text_field :run_title %>
+  </p>
+  <p>
+    <%= f.label(:run_distance, "距離") %></br>
+    <%= f.text_field :run_distance %>
+　</p>
+　<p>
+　  <%= f.label(:run_time, "タイム") %></br>
+　  <%= f.time_field :run_time %>
+　</p>
+　<p>
+　  <%= f.label(:run_article, "記事") %></br>
+　  <%= f.text_area :run_article %>
+　</p>
+　<%= f.submit '変更する' %>
+<% end %>
+<%= link_to '戻る', "/records", method: :get %>
