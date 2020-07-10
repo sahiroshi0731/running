@@ -1,0 +1,25 @@
+<%= form_tag('/records', method: :post) do %>
+  <div>
+    日付</br>
+    <input type="date" name="run_day">
+  </div>
+  <div>
+    タイトル</br>
+    <input type="text" name="run_title">
+  </div>
+  <div>
+    距離</br>
+    <input type="text" name="run_distance">
+  </div>
+  <div>
+    タイム</br>
+    <input type="time" name="run_time" step="1" value="00:00:00">
+  </div>
+  <div>
+    記事</br>
+    <textarea name="run_article" rows="10" cols="30"></textarea>
+  </div>
+  <div>
+    <input type="submit" value="送信する"></p>
+  </div>
+<% end %>

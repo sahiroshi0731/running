@@ -1,0 +1,38 @@
+<div class='xxx'>
+  <!--目標の表示  -->
+  <div class='target'>
+    <% if @target == nil %>
+    <% else %>
+      <p1>今月の目標</p1>
+      <p>　宣言：<%= @target.target_declaration %>　距離：<%= @target.target_distance %>km</p>
+    <% end %>  
+  </div>
+  
+  <!--トピックの表示  -->
+  <div class='topic'>
+    トピック</br>
+    <% if @target == nil %>
+      <!--目標未登録の場合-->
+        まずは今月の目標を登録してください
+      <%= link_to "今月の目標を登録する", "targets/new", method: :get ,class: "btn-so-pop" %>
+    <% else %>
+    <!--目標登録済みの場合-->
+      <il>
+        <li>今月は<%= @records.count %>件の記録があります</li>
+        <li>現在の月間走行距離は<%= @total_distance %>kmです</li>
+        <% if @total_distance2 > 0 %>
+          <li>目標達成まであと<%= @total_distance2 %>kmです</li>
+        <% else %>
+          <li>目標達成しました！</li>
+        <% end %>  
+      </il>  
+      <%= link_to "記録を登録する", "records/new", method: :get ,class: "btn-so-pop" %>
+  </div>
+  <% end %>
+  <%= render partial: "record",locals: { records: @records, ds: @d, ym: @ym  } %>
+</div>
+
+  
+  
+  
+  

@@ -1,30 +1,59 @@
-<div class='notice'>
-  <%= notice %>
+<div class='contents'>
+  <header class="leftNavigation">
+    <p>メニュー</p>
+    <div class="b1">
+      <il>
+        <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+        <% if current_user.admin? %>
+          <li><%= link_to "ユーザー管理", "/admin/users", method: :get  %></li>
+        <% end %>  
+        <li><%= link_to "記録を登録する", "records/new", method: :get %></li>
+        <li><%= link_to '自分を参照', "members/#{@member.id}", method: :get %></li>
+        <li><%= link_to 'メンバー一覧', members_path %></li>
+      </il>
+    </div>
+    <div class="b2">
+       <%= render partial: "archive",locals: { records: @records, ds: @d, ym: @ym  } %>
+    </div>
+  </header>
+  <div class="main">
+    <div class ="a1">
+      <% if current_user %>
+        <% then %>
+          <p><%= @member.nickname %>さんの<%= @member.maintitle %></p>
+        <% else %>
+          <p>ランニング記録帳</p>
+      <% end %>  
+    </div>
+    <div class ="a2">
+      <div class ="a2_1">
+        <p>今月の目標</p>
+        <p>宣言：<%= @target.target_declaration %></p>
+        <p>距離：<%= @target.target_distance %>km</p>
+      </div>
+      <div class ="a2_2">
+        <p>◎トピック</p>
+        <% if @target == nil %>
+          <!--目標未登録の場合-->
+          まずは今月の目標を登録してください
+          <%= link_to "今月の目標を登録する", "targets/new", method: :get ,class: "btn-so-pop" %>
+        <% else %>
+          <!--目標登録済みの場合-->
+          <il>
+            <li>　今月は<%= @records.count %>件の記録があります</li>
+            <li>　現在の月間走行距離は<%= @total_distance %>kmです</li>
+            <% if @total_distance2 > 0 %>
+              <li>　目標達成まであと<%= @total_distance2 %>kmです</li>
+            <% else %>
+              <li>　目標達成しました！</li>
+            <% end %>  
+          </il>
+        <% end %>  
+      </div>
+   </div>
+   <%= render partial: "record",locals: { records: @records, ds: @d, ym: @ym  } %>
 </div>
-<div class='topic'>
-  今月は、<%= @records.count %>件の記録があります</br>
-  月間走行距離は<%= @total_distance %>kmです 
-</div>
-<%= link_to "登録する", "records/new", method: :get ,class: "btn-square-so-pop" %>
-<div class='list'>
-  <table>
-    <tr>
-      <th>日付</th>
-      <th>タイトル</th>
-      <th>距離</th>
-      <th>タイム</th>
-    </tr>
-    <% @records.each do |record| %>
-      <% day = l record.run_day %>
-      <tr>
-        <td><%= link_to day, "/records/#{record.id}", method: :get %></td>
-        <td><%= record.run_title %></td>
-        <td align="right"><%= record.run_distance %>km</td>
-        <td><%= l record.run_time %></td>
-    </tr>
-    <% end %>
-  </table>
-</div>
+
 
   
   

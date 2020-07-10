@@ -1,7 +1,25 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # ログイン
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create' 
+  delete '/logout', to: 'sessions#destroy'
+  
+  # ユーザ機能
+  namespace :admin do
+    resources :users
+  end
+  
+  # レコード一覧
   root  'records#index' 
   resources :records
-  # get 'records' => 'records#index'
-  # get 'records/:id' => 'records#show'
+  
+  # アーカイブ
+  get  '/records/archives/:yyyymm', to: 'records#archives', as: :record_archive
+  
+  resources :members
+  # ?
+  # get  '/member/:id', to: 'root#member', as: :member
+  
+  # 目標登録
+  resources :targets
 end

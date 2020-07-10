@@ -1,0 +1,32 @@
+<div class='main'>
+  <!--リスト-->
+  <div class='list'>
+    <!--一覧のタイトル表示-->
+    <p><%= ymkirikaeconv(ym) %></p>
+    <table>
+      <tr>
+        <th>日付</th>
+        <th>タイトル</th>
+        <th>距離</th>
+        <th>タイム</th>
+      </tr>
+      <% records.each do |record| %>
+        <% day = l record.run_day %>
+        <tr>
+          <td><%= link_to day, "/records/#{record.id}", method: :get %></td>
+          <td><%= record.run_title %></td>
+          <td align="right"><%= record.run_distance %>km</td>
+          <td><%= record.run_time %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <!--月別件数表示(アーカイブ）-->
+  <div class='archives'>
+    <p> アーカイブ </p>
+    <% ds.each do |d| %>
+     <li><%= link_to ymconv(d.month,d.cnt.to_s), record_archive_path(d.month) %></li>
+    <% end %>
+  </div>
+
+</div>

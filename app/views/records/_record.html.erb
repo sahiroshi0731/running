@@ -1,0 +1,29 @@
+<div class='a4'>
+   <h3><%= ymkirikaeconv(ym) %></h3>
+    <table>
+      <tr>
+        <th></th>
+        <th>日付</th>
+        <th>タイトル</th>
+        <th>種目</th>
+        <th>距離</th>
+        <th>タイム</th>
+      </tr>
+      <% records.each do |record| %>
+        <% day = l record.run_day %>
+        <tr>
+          <td>
+            <% if record.raceflg %>
+              <%= image_tag 'race.png' %>
+            <% end %>
+          </td>
+          <td><%= link_to day, "/records/#{record.id}", method: :get %></td>
+          <td align="left"><%= record.run_title %></td>
+          <td><%= record.out_competition %></td>
+          <td align="right"><%= record.run_distance %>km</td>
+          <td><%= record.run_time %></td>
+          <td><%= record.sumsec %></td>
+        </tr>
+      <% end %>
+    </table>
+</div>

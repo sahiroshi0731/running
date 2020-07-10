@@ -1,12 +1,19 @@
   
 $base: #f5fffa; /*基本色*/
+$fontw4: "ヒラギノ丸ゴ Pro W4";
+
+/*バリデーションエラーによるレイアウト崩れを抑止*/
+.field_with_errors {
+  display: contents;
+  // もしくは diplay: inline;
+}
 
 /*ボタン*/
-.btn-square-so-pop {
+.btn-so-pop {
   position: relative;
   display: inline-block;
-  padding: 0.25em 0.5em;
-  margin: 10px 50px 0px 20px;
+  padding: 0.25em 0.25em;
+  margin: 10px 50px 0px 0px;
   text-decoration: none;
   color: #FFF;
   background: #CCCCFF;/*色*/
@@ -16,7 +23,7 @@ $base: #f5fffa; /*基本色*/
   border: solid 2px #d27d00;/*線色*/
 }
 
-.btn-square-so-pop:active {
+.btn-so-pop:active {
   /*押したとき*/
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
@@ -25,43 +32,80 @@ $base: #f5fffa; /*基本色*/
 body {
   background: $base;
 }
+table{
+    width: 900px;
+}
+td {
+    font-size: 0.9em;
+}
+li {
+  list-style: none;
+}
 
 /*ヘッダー*/
 .header {
-  height: 100px;
-  padding: 10px 50px 30px 20px;
-  margin: 10px 50px 0px 30px;
-  color: #008b8b;
-  background: #faf0e6;
-  border-bottom: solid 6px #fafee2;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
-  border-radius: 9px;
+    height: 90px;
+    margin-bottom: 5px;
+    text-align: center;
 }
 .header p {
-    margin: 0; 
-    padding: 0;
-    font-size: 2.4em;
-    font-family: "ヒラギノ丸ゴ Pro W4"; 
-}
-/*メッセージ*/
-.notice {
-  padding: 10px 50px 30px 20px;
-  margin: 10px 50px 0px 20px;
-}
-.topic {
-  padding: 10px 50px 30px 20px;
-  margin: 0px 50px 0px 0px;
-  color: #FF0000;
-}
-/*一覧*/
-.list {
-  padding: 10px 50px 30px 20px;
-  margin: 0px 50px 0px 0px;
-}
-.list td,th {
-  padding: 10px 20px;
+    font-family: "Nico Moji";
+    margin-top:10px;
+    font-size: 80px;
 }
 
+.contents{
+    flex: 1;
+    display: flex;
+    min-height: 100vh; /*高さの最小値*/
+}
+
+.leftNavigation{
+    width: 300px;
+    text-align: center;
+    background-color: #FFF5EE;
+}
+.main{
+    min-height: 100vh;
+    background-color: #F0F8FF;
+    text-align: center;
+    margin-left: 10px;
+}
+.a1 {
+    height: 40px;
+    font-size: 1.9em;
+    font-family: "ヒラギノ丸ゴ Pro W4";
+}
+.a2 {
+    margin-top: 20px;
+    background-color: #FFFAFA;
+    display: flex;
+    border: 2px solid #555;
+    border-radius: 10px;
+}
+.a2_1 {
+    width: 500px;
+    font-size: 1.1em;
+    text-align: left;
+    margin-left: 50px;
+    line-height: 1.5em;
+}    
+.a2_2 {
+    width: 500px;
+    font-size: 0.8em;
+    text-align: left;
+    color: #000FFF;
+    margin-left: 50px;
+    margin-top: 10px;
+}
+.a4 {
+    margin-top: 20px;
+    width: 1000px;
+    font-size: 1.2em;
+    margin-left: 100px;
+}
+
+/*詳細表示*/
 .detail {
   padding: 10px 50px 30px 20px;
   margin: 10px 50px 0px 30px;
@@ -83,3 +127,91 @@ body {
  
   }
 }
+
+
+/*登録画面表示*/
+.registar {
+  padding: 10px 50px 30px 20px;
+  margin: 10px 50px 0px 30px;
+  background: #CCCCFF; 
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 9px;
+  .headline {
+    background: #FFCC33;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+  　border-radius: 9px;
+    p1 {
+      display: inline;
+      padding-right: 100px;
+      font-size: 2.0rem;
+      font-family: $fontw4;
+    }
+    p2 {
+      background: #FFCC33;
+      display: inline;
+      padding-left: 800px;
+      font-size: 1.0rem;
+    }
+  }
+  .input_area {
+    background: #FFDDFF;
+    .input {
+      padding: 0.1em 1em;
+      margin: 0.1em 0;
+      background: #FFFFEE;
+      font-size: 1.2rem;
+      .item{
+        padding: 0.1em 0.1em;
+        margin: 0.1em 0;
+      }
+      .item p{
+        margin: 0; 
+        padding: 0;
+      }
+      .text-center{
+           padding: 0.1em 0.1em;
+           margin: 0.1em 0.1em;
+           color: #5989cf;
+           background: #c6e4ff;
+           border-bottom: solid 6px #aac5de;
+           border-radius: 9px;
+      }
+    }
+  }
+}
+
+// ここから先は不要
+/*ログイン*/
+.login_back {
+  padding: 10px 50px 30px 20px;
+  margin: 50px 500px 0px 500px;
+  background: #CCCCFF; 
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 9px;
+  overflow: hidden;
+  .input_area {
+    background: #FFFFEE;
+    .input {
+      padding: 0.1em 1em;
+      margin: 0.1em 0;
+      font-size: 1.2rem;
+      .item{
+        padding: 0.1em 0.1em;
+        margin: 0.1em 0;
+      }
+      .text-center{
+           padding: 0.1em 0.1em;
+           margin: 0.1em 0.1em;
+           color: #000000;
+           background: #c6e4ff;
+           border-bottom: solid 6px #aac5de;
+           border-radius: 9px;
+      }
+      .bb{
+        margin: 10px auto;
+        width: 100px;
+      }
+    }
+  }
+}    
+    

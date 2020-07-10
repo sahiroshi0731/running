@@ -1,0 +1,19 @@
+<h1>ユーザー管理</h1>
+<div class='list'>
+  <table>
+    <tr>
+      <th>名前</th>
+      <th>email</th>
+      <th>管理者</th>
+    </tr>
+    <% @users.each do |user| %>
+     <tr>
+      <td><%= link_to user.name, "/admin/users/#{user.id}", method: :get %></td>
+       <td><%= user.email %></td>
+      <td><%= user.admin %></td>
+     </tr>
+    <% end %>
+  </table>  
+  <%= link_to "ユーザー登録する", new_admin_user_url, method: :get ,class: "btn-so-pop" %>
+</div>
+<%= link_to "メイン", root_path, method: :get %>

@@ -1,0 +1,55 @@
+// Place all the styles related to the Sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body,p,form,input{margin: 0}
+// メッセージ
+.notice1 {
+  font-size: 10px;
+  color: #F00;
+}
+// ログインフォーム
+#form{
+    width: 400px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 1px solid #555;
+    background: #CCFF99;
+    border-radius: 10px;/*角の丸み*/
+    box-shadow: 10px 10px 10px rgba(10,10,10,0.4);
+    }
+form p{
+    font-size: 14px;
+    font-weight: bold;
+    }
+
+.form-title{
+    text-align: center; /*中央に配置*/
+    font-weight: bold;
+    font-size: 20px;
+    text-decoration: underline; /*アンダーライン*/
+    }
+// ラベル
+.mail,.pass{
+    margin-bottom: 20px;
+    background: #CCFF33;
+    }
+// 入力
+input[type="email"],
+input[type="password"] {
+    width: 350px;
+    padding: 4px;
+    font-size: 14px;
+    background: #FFFFCC;
+    border: 1px solid #555;
+    }
+// ボタン    
+.submit{
+  padding: 0.2em 1.2em;
+  margin: 20px 130px 0px;
+  font-weight: bold;
+  color: #000;/*フォントの色*/
+  background: #FFCC66;/*背景色*/
+  border-radius: 8px;/*角の丸み*/
+  border: solid 2px #FFCC77;/*線の色*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05); /*かげ*/
+  }

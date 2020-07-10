@@ -1,0 +1,16 @@
+<div class='login_back'>
+  <div class='notice'>
+    <%= notice %>
+  </div>
+  <div class='input_area'>
+    <%= form_with scope: :session, local: true do |f| %>
+      <div class='input'>
+        <p><%= f.label :email, 'メールアドレス',{class: "item"} %></p>
+        <%= f.text_field :email, {class: "text-center"} %></br>
+        <p><%= f.label :password, 'パスワード',{class: "item"} %></p>
+        <%= f.password_field :password, {class: "text-center"}%></br>
+        <div class='bb'><%= f.submit "ログイン",class: "btn-so-pop" %></div>
+      </div>
+    <% end %>
+  </div>
+</div>

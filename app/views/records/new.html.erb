@@ -1,38 +1,39 @@
-<div><%= notice %></div>
-<h1>登録画面</h1>
-<% if @record.errors.present? %>
-  <ul>
-    入力エラー！！
-    <% @record.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+<div class='registar'>
+  <div><%= notice %></div>
+  <% if @record.errors.present? %>
+    <ul>
+      入力エラー！！
+      <% @record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <div class='headline'>
+    <p1>ランニング記録の登録</p1>
+    <p2><%= link_to '戻る', "/records", method: :get %></p2>
+  </div>
+  <div class='input_area'>
+    <%= form_for(@record) do |f| %>
+      <div class='input'>
+        <p><%= f.label(:run_title, "タイトル",{class: "item"}) %></p>
+        <%= f.text_field :run_title, {size:"50",class: "text-center"} %></br>
+        <p><%= f.label(:raceflg, "大会",{class: "item"}) %></p>
+        <%= f.check_box(:raceflg, {:checked => false},checked_value = "true",unchecked_value = "false" ) %>
+        <p><%= f.label(:run_day,"日付",{class: "item"}) %></p>
+        <%= f.date_field(:run_day,{class: "text-center"} )%></br>
+        <p><%= f.label(:run_distance, "距離",{class: "item"}) %></p>
+        <%= f.text_field :run_distance,{size:"10",class: "text-center"} %>km</br>
+        <p><%= f.label(:run_time, "タイム（時：分：妙）",{class: "item"}) %></p>
+        <%= f.text_field :hour,{size:"2",class: "text-center"} %>
+        <%= f.label(:run_time, ":",{class: "item"}) %>
+        <%= f.text_field :min,{size:"2",class: "text-center"} %>
+        <%= f.label(:run_time, ":",{class: "item"}) %>
+        <%= f.text_field :sec,{size:"2",class: "text-center"} %>
+        <p><%= f.label(:run_article, "記事",{class: "item"}) %></p>
+        <%= f.text_area :run_article,{size:"100x5",class: "text-center"}  %></br>
+        <%= f.hidden_field :competition, :value => "0" %>
+    　   <%= f.submit "記録を登録する",class: "bte-so-pop" %>
+      </div>
     <% end %>
-  </ul>
-<% end %>   
-
-
-<%= form_tag('/records', method: :post) do %>
-  <div>
-    日付</br>
-    <input type="date" name="run_day">
   </div>
-  <div>
-    タイトル</br>
-    <input type="text" name="run_title">
-  </div>
-  <div>
-    距離</br>
-    <input type="text" name="run_distance">
-  </div>
-  <div>
-    タイム</br>
-    <input type="time" name="run_time" step="1" value="00:00:00">
-  </div>
-  <div>
-    記事</br>
-    <textarea name="run_article" rows="10" cols="30"></textarea>
-  </div>
-  <div>
-    <input type="submit" value="送信する"></p>
-  </div>
-<% end %>
-<%= link_to '戻る', "/records", method: :get %>
+</div>

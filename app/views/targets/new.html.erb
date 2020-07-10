@@ -1,0 +1,7 @@
+<%= form_for(@target) do |f| %>
+  <p><%= f.label(:target_declaration, "タイトル",{class: "item"}) %></p>
+  <%= f.text_field :target_declaration, {size:"50",class: "text-center"} %></br>
+  <p><%= f.label(:target_distance, "距離",{class: "item"}) %></p>
+  <%= f.text_field :target_distance,{size:"10",class: "text-center"} %>km</br>
+  <%= f.submit "送信する",class: "btn-square-so-pop" %>
+<% end %>

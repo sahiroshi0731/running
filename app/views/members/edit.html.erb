@@ -1,0 +1,28 @@
+<p>member edit</p>
+<%= form_for @member do |f| %>
+  <p>
+    <%= f.label(:nickname, "ニックネーム") %></br>
+    <%= f.text_field :nickname %>
+  </p>
+   <p>
+    <%= f.label(:maintitle, "タイトル") %></br>
+    <%= f.text_field :maintitle %>
+  </p>
+    <%= f.label(:sex, "性別") %></br>
+　　<%= f.select :sex, [["男性","M"],["女性","W"]], include_blank: "選択して下さい" %>
+　<p><%= f.label(:full_time, "フルマラソン（時：分：妙）",{class: "item"}) %></p>
+        <%= f.text_field :fullhour,{size:"2",class: "text-center"} %>
+        <%= f.label(:full_time, ":",{class: "item"}) %>
+        <%= f.text_field :fullmin,{size:"2",class: "text-center"} %>
+        <%= f.label(:full_time, ":",{class: "item"}) %>
+        <%= f.text_field :fullsec,{size:"2",class: "text-center"} %>
+  　<p><%= f.label(:half_time, "ハーフマラソン（時：分：妙）",{class: "item"}) %></p>
+        <%= f.text_field :halfhour,{size:"2",class: "text-center"} %>
+        <%= f.label(:half_time, ":",{class: "item"}) %>
+        <%= f.text_field :halfmin,{size:"2",class: "text-center"} %>
+        <%= f.label(:half_time, ":",{class: "item"}) %>
+        <%= f.text_field :halfsec,{size:"2",class: "text-center"} %>      
+　<%= f.submit '変更する' %>
+<% end %>
+<%= link_to '戻る', "/", method: :get %>
+

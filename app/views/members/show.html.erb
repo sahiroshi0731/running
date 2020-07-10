@@ -1,0 +1,18 @@
+<p>氏名</p>
+<p><%= @user.name %><p>
+<p>ニックネーム</p>
+<p><%= @member.nickname %><p>
+<p>性別</p>
+<p><%= @member.outsex %><p>
+<p>登録日</p>
+<p><%= @member.enrollmentymd %><p>
+<p>目標</p>
+<p>フルマラソン</p> 
+<p><%= @member.full_time %></p>
+<p><%=  @member.full_sumsec %><p>
+<p>ハーフマラソン</p> 
+<p><%= @member.half_time %></p>
+<p><%=  @member.half_sumsec %><p>
+<p>一言</p> 
+<p><%=  @member.comment %><p>
+<li><%= link_to '自分を編集', edit_member_path %></li>

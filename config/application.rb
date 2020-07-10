@@ -18,5 +18,7 @@ module Running
     
     # デフォルトのロケールを日本（ja）に設定
     config.i18n.default_locale = :ja
+    # field_with_errorsクラスの挿入を抑止する
+    # config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
   end
 end

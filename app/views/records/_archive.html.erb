@@ -1,0 +1,4 @@
+<p> アーカイブ </p>
+<% ds.each do |d| %>
+  <li><%= link_to ymconv(d.month,d.cnt.to_s), record_archive_path(d.month) %></li>
+<% end %>

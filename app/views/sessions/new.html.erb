@@ -1,0 +1,13 @@
+<div id="form">
+  <div class='notice1'>
+    <%= notice %>
+  </div>
+    <p class="form-title">ログイン</p>
+    <%= form_with scope: :session, local: true do |f| %>
+        <p><%= f.label :email, 'メールアドレス',{class: "mail"} %></p>
+        <%= f.email_field :email, {class: "email"} %></br>
+        <p><%= f.label :password, 'パスワード',{class: "pass"} %></p>
+        <%= f.password_field :password, {class: "password"}%></br>
+        <p><%= f.submit "ログイン", {class: "submit"} %></p>
+    <% end %>
+</div>
