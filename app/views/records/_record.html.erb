@@ -3,6 +3,7 @@
     <table>
       <tr>
         <th></th>
+        <th></th>
         <th>日付</th>
         <th>タイトル</th>
         <th>種目</th>
@@ -17,13 +18,17 @@
               <%= image_tag 'race.png' %>
             <% end %>
           </td>
+          <td>
+            <% if record.bestflg %>
+              <%= image_tag 'star.png' %>
+            <% end %>
+          </td>
           <td><%= link_to day, "/records/#{record.id}", method: :get %></td>
           <td align="left"><%= record.run_title %></td>
           <td><%= record.out_competition %></td>
           <td align="right"><%= record.run_distance %>km</td>
           <td><%= record.run_time %></td>
-          <td><%= record.sumsec %></td>
-        </tr>
+         </tr>
       <% end %>
     </table>
 </div>

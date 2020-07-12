@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_08_113330) do
+ActiveRecord::Schema.define(version: 2020_07_12_033647) do
 
   create_table "members", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_07_08_113330) do
     t.integer "sec", limit: 1
     t.boolean "raceflg", default: false, null: false
     t.string "competition"
+    t.boolean "bestflg", default: false, null: false
     t.index ["user_id"], name: "index_records_on_user_id"
     t.index ["user_id"], name: "user_id"
   end

@@ -42,14 +42,14 @@ class Member < ApplicationRecord
     end
     
     # フル秒換算
-    def self.bestfull_sumsec
+    def bestfull_sumsec
+        return bestfullhour * 3600 + bestfullmin * 60 + bestfullsec
         # halfhour * 3600 + fullmin * 60 + fullsec
-        zszs(bestfullhour,bestfullmin,bestfullsec)
     end
     
     # ハーフ秒換算
-    def self.besthalf_sumsec
-        azszs(besthalfhour,besthalfmin,besthalfsec)
+    def besthalf_sumsec
+        return besthalfhour * 3600 + besthalfmin * 60 + besthalfsec
     end
     
     # 秒数を求める

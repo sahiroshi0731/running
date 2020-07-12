@@ -19,8 +19,8 @@ class Record < ApplicationRecord
   end
   
   # タイム秒換算
-  def sumsec
-      return hour * 3600 + min * 60 + sec 
+  def sum_sec
+      return self.hour * 3600 + self.min * 60 + self.sec 
   end
     
 

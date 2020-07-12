@@ -73,10 +73,10 @@ class RecordsController < ApplicationController
 
     @record = current_user.records.new(record_params)
     if @record.save
+      redirect_to records_path, notice:"登録できました"
       if params.require(:record)[:raceflg] == "true"
          member_update
       end
-      redirect_to records_path, notice:"登録できました"
     else
       # redirect_to new_record_path, notice:"入力エラー"
       render :new
@@ -127,20 +127,35 @@ class RecordsController < ApplicationController
   
   def member_update
     @member = current_user.member
-    @record = current_user.records.order(updated_at: :desc).limit(1)
+    # @record = current_user.records.order(updated_at: :desc).limit(1)
+    # @record = Record.find(91)
+    @record = Record.last
+    # @record = Record.find_by(user_id:1)
+    logger.debug "＊＊＊デバッグログスタート"
+    logger.debug "@record: #{@record}"
+    logger.debug "@record.run_title: #{@record.run_title}"
+    logger.debug "@record.sum_sec: #{@record.sum_sec}"
+    logger.debug "@member: #{@member}"
+    logger.debug "@member.nickname: #{@member.nickname}"
+    logger.debug "@member.bestfull_sumsec: #{@member.bestfull_sumsec}"
     # エラーになる（undefined method `sumsec' ）
-    if params.require(:record)[:competition] == "1" && @record.sumsec > @member.bestfull_sumsec
+    if params.require(:record)[:competition] == "1" && @record.sum_sec < @member.bestfull_sumsec
       @member.bestfullhour = params.require(:record)[:hour]
       @member.bestfullsec = params.require(:record)[:sec]  
       @member.bestfullmin = params.require(:record)[:min]  
+      @record.bestflg = "1"
+      @member.save
+      @record.save
     elsif 
-      params.require(:record)[:competition] == "2" && @record.sumsec > @member.besthalf_sumsec
+      params.require(:record)[:competition] == "2" && @record.sum_sec < @member.besthalf_sumsec
       @member.besthalfhour = params.require(:record)[:hour]
       @member.besthalfsec = params.require(:record)[:sec]  
       @member.besthalfmin = params.require(:record)[:min]
+      @record.bestflg = "1"
+      @member.save
+      @record.save
     end  
-    # params.require(:record)[:hour] = params.require(:record)[:hour] 
-    @member.save      
+    
   end
   
 end
