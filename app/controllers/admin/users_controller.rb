@@ -13,20 +13,28 @@ class Admin::UsersController < ApplicationController
   def new
     @user =User.new
     @user.build_member
-    @member = current_user.member
+    # @member = current_user.member
+    logger.debug "＊＊＊newデバッグログスタート"
+    logger.debug "@user.build_member:#{@user.build_member}"
+    # logger.debug "@member.id:#{@member.id}"
+    # logger.debug "@member.nickname:#{@member.nickname}"
+    
   end
 
   def create 
-    # @user =User.new(user_params)
-    # @user =User.new(user_params).build_member
-    # ユーザーとメンバーを同時に作成する
     @user =User.create(user_params)
+    p "eeeeeeeeee"
+    @user.errors.full_messages.each do |ee| 
+      p ee  
+    end
+    p "eeeeeeeeee"
 
     if @user.save
       redirect_to root_url, notice:"新規ユーザーを登録しました"
     else
+      logger.debug "@user.save:#{@user.save}"
       # redirect_to root_url, notice:"登録できません"
-      @member = current_user.member
+      # @member = current_user.member
       render("admin/users/new")
     end  
   end
@@ -46,7 +54,13 @@ class Admin::UsersController < ApplicationController
       :password_confirmation,
       member_attributes:[:id,
                         :enrollment,
-                        :user_id]
+                        :user_id,
+                        :fullhour,
+                        :fullmin,
+                        :fullsec,
+                        :halfhour,
+                        :halfmin,
+                        :halfsec]
                         )
   end
 

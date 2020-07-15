@@ -1,5 +1,16 @@
 class MembersController < ApplicationController
   
+  def index
+    @members = Member.all
+    # @members.each do |member|
+      # p "++str"
+      # p member.id
+      # p member.user_id
+      # p Member.find_by(user_id: member.user_id).user.name
+      # p "++end"
+    # end  
+  end
+
   def show
     @user = User.find(current_user.id)
     @member = @user.member

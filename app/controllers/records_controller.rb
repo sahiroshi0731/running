@@ -2,18 +2,15 @@ class RecordsController < ApplicationController
   
   def index
     # 当日日付を取得し検索用の文字列に変換する
-    require 'date'
-    t = Date.today
+    t = today_get
     search_date = t.strftime("%Y-%m-%d")
     search_date2 = t.strftime("%Y%m")
     # メンバー情報を取得する
     @member = current_user.member
     # 当月の一覧を取得する
-    # @recordall = current_user.records
     @records = current_user.records.where(run_day: search_date.in_time_zone.all_month).order(run_day: "ASC")
     # 当月の一覧より距離の集計値を求める
     @total_distance = @records.sum(:run_distance)
-
     # 月分の集計を行う
     # カレントユーザのレコードのみ取得
     @records2 =  current_user.records
@@ -28,31 +25,26 @@ class RecordsController < ApplicationController
   
   # 月別アーカイブ
   def archives
-    # パラメータを文字列に型変換する 
+    # パラメータの年月を「YYYY年MM月」の形式で表示する
     x = params[:yyyymm]
-    x2 = x.to_s + '01'
     ym = x.to_s
     @ym = ym.slice(0..3) +"年" + ym.slice(4..5) + "月" 
+    
     # 文字列を日付に型変換する 
+    x2 = x.to_s + '01'
     t = x2.to_date
     search_date = t.strftime("%Y-%m-%d")
-    # 当月の一覧を取得する
+    # 対象月の一覧を取得する
     @records = current_user.records.where(run_day: search_date.in_time_zone.all_month).order(run_day: "ASC")
-    # 当月の一覧より距離の集計値を求める
+    # 対象月の一覧より距離の集計値を求める
     @total_distance = @records.sum(:run_distance)
 
-     # 月分の集計を行う
+    # 対象月分の集計を行う
     # カレントユーザのレコードのみ取得
     @records2 =  current_user.records
     # 年月単位で集計
     @d = @records2.group("DATE_FORMAT(run_day, '%Y%m')").select("DATE_FORMAT(run_day, '%Y%m') as month, count(id) as cnt")
   end  
-  
-  # ?????
-  # def member
-  #   @user = find(current_user_id)
-  # end  
-    
   
   def new
     @record = Record.new
@@ -74,6 +66,7 @@ class RecordsController < ApplicationController
     @record = current_user.records.new(record_params)
     if @record.save
       redirect_to records_path, notice:"登録できました"
+      # 大会フラグがある場合、自己ベストを更新したか判定する
       if params.require(:record)[:raceflg] == "true"
          member_update
       end
@@ -106,6 +99,9 @@ class RecordsController < ApplicationController
   
   private
   def record_params
+    p "$$$$$$$$$$$$"
+    p params
+    p "$$$$$$$$$$$$"
     params.require(:record).permit(:run_day, 
                                    :run_title, 
                                    :run_article, 
@@ -126,11 +122,10 @@ class RecordsController < ApplicationController
   end  
   
   def member_update
+    # メンバーを取得
     @member = current_user.member
-    # @record = current_user.records.order(updated_at: :desc).limit(1)
-    # @record = Record.find(91)
+ 　　# 最新のレコードを取得
     @record = Record.last
-    # @record = Record.find_by(user_id:1)
     logger.debug "＊＊＊デバッグログスタート"
     logger.debug "@record: #{@record}"
     logger.debug "@record.run_title: #{@record.run_title}"
@@ -138,7 +133,6 @@ class RecordsController < ApplicationController
     logger.debug "@member: #{@member}"
     logger.debug "@member.nickname: #{@member.nickname}"
     logger.debug "@member.bestfull_sumsec: #{@member.bestfull_sumsec}"
-    # エラーになる（undefined method `sumsec' ）
     if params.require(:record)[:competition] == "1" && @record.sum_sec < @member.bestfull_sumsec
       @member.bestfullhour = params.require(:record)[:hour]
       @member.bestfullsec = params.require(:record)[:sec]  
@@ -155,7 +149,6 @@ class RecordsController < ApplicationController
       @member.save
       @record.save
     end  
-    
   end
   
 end

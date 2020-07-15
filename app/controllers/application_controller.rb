@@ -12,4 +12,9 @@ class ApplicationController < ActionController::Base
   def login_required
     redirect_to login_url unless current_user
   end  
+  # 当日日付を取得
+  def today_get
+    require 'date'
+    return Date.today
+  end  
 end

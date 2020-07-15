@@ -9,14 +9,14 @@
     </ul>
   <% end %>
   <div class='headline'>
-    <p1>ランニング記録の登録</p1>
-    <p2><%= link_to '戻る', "/records", method: :get %></p2>
+    <div class="p1">ランニング記録の登録</div>
+    <div class="p2"><%= link_to '戻る', "/records", method: :get %></div>
   </div>
   <div class='input_area'>
     <%= form_for(@record) do |f| %>
       <div class='input'>
         <p><%= f.label(:run_title, "タイトル",{class: "item"}) %></p>
-        <%= f.text_field :run_title, {size:"50",class: "text-center"} %></br>
+        <%= f.text_field :run_title, {size:"50",class: "text-center"} %>
         <p><%= f.label(:raceflg, "大会",{class: "item"}) %></p>
         <%= f.check_box(:raceflg, {:checked => false},checked_value = "true",unchecked_value = "false" ) %>
         <p><%= f.label(:run_day,"日付",{class: "item"}) %></p>
@@ -30,9 +30,9 @@
         <%= f.label(:run_time, ":",{class: "item"}) %>
         <%= f.text_field :sec,{size:"2",class: "text-center"} %>
         <p><%= f.label(:run_article, "記事",{class: "item"}) %></p>
-        <%= f.text_area :run_article,{size:"100x5",class: "text-center"}  %></br>
+        <%= f.text_area :run_article,{size:"65x5",class: "text-center"}  %></br>
         <%= f.hidden_field :competition, :value => "0" %>
-    　   <%= f.submit "記録を登録する",class: "bte-so-pop" %>
+        <%= f.submit "登録する",class: "btn-so-pop" %>
       </div>
     <% end %>
   </div>

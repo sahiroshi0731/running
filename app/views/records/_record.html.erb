@@ -1,6 +1,6 @@
 <div class='a4'>
    <h3><%= ymkirikaeconv(ym) %></h3>
-    <table>
+     <table>
       <tr>
         <th></th>
         <th></th>
@@ -10,25 +10,25 @@
         <th>距離</th>
         <th>タイム</th>
       </tr>
-      <% records.each do |record| %>
-        <% day = l record.run_day %>
-        <tr>
-          <td>
-            <% if record.raceflg %>
-              <%= image_tag 'race.png' %>
-            <% end %>
-          </td>
-          <td>
-            <% if record.bestflg %>
-              <%= image_tag 'star.png' %>
-            <% end %>
-          </td>
-          <td><%= link_to day, "/records/#{record.id}", method: :get %></td>
-          <td align="left"><%= record.run_title %></td>
-          <td><%= record.out_competition %></td>
-          <td align="right"><%= record.run_distance %>km</td>
-          <td><%= record.run_time %></td>
-         </tr>
-      <% end %>
-    </table>
+        <% records.each do |record| %>
+          <% day = l record.run_day %>
+          <tr>
+            <td>
+              <% if record.raceflg %>
+                <%= image_tag 'race.png' %>
+              <% end %>
+            </td>
+            <td>
+              <% if record.bestflg %>
+                <%= image_tag 'star.png' %>
+              <% end %>
+            </td>
+            <td class="aa"><%= link_to day, "/records/#{record.id}", method: :get %></td>
+            <td align="left"><%= record.run_title %></td>
+            <td><%= record.out_competition %></td>
+            <td align="right"><%= record.run_distance %>km</td>
+            <td><%= record.run_time %></td>
+           </tr>
+        <% end %>
+     </table>
 </div>

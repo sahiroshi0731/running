@@ -1,1 +1,19 @@
-<p>indx</p>
+<div class='a4'>
+  <table>
+    <tr>
+      <th>氏名</th>
+      <th>ニックネーム</th>
+      <th>性別</th>
+      <th>入会日</th>
+    </tr>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= Member.find_by(user_id: member.user_id).user.name %></td>
+        <td><%= member.nickname %></td>
+        <td><%= member.outsex %></td>
+        <td><%= member.enrollment %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<%= link_to '戻る', root_path %>

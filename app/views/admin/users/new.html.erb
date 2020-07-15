@@ -6,6 +6,12 @@
   <%= f.fields_for :member do |s| %>
     <%= s.label :enrollment, '年月日' %>
     <%= s.text_field :enrollment %>
+    <%= s.hidden_field :fullhour, :value => "0" %>
+    <%= s.hidden_field :fullmin, :value => "0" %>
+    <%= s.hidden_field :fullsec, :value => "0" %>
+    <%= s.hidden_field :halfhour, :value => "0" %>
+    <%= s.hidden_field :halfmin, :value => "0" %>
+    <%= s.hidden_field :halfsec, :value => "0" %>
   <% end %>
   <%= f.label :email, 'メールアドレス' %>
   <%= f.text_field :email %>

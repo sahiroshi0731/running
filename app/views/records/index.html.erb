@@ -27,17 +27,23 @@
     </div>
     <div class ="a2">
       <div class ="a2_1">
-        <p>今月の目標</p>
-        <p>宣言：<%= @target.target_declaration %></p>
-        <p>距離：<%= @target.target_distance %>km</p>
+        <% if @target != nil %>
+          <p>今月の目標</p>
+          <p>宣言：<%= @target.target_declaration %></p>
+          <p>距離：<%= @target.target_distance %>km</p>
+        <% end %>
       </div>
       <div class ="a2_2">
-        <p>◎トピック</p>
-        <% if @target == nil %>
+        <% if @member.nickname == nil %>
+          <!--ユーザー登録直後の場合-->
+        　メンバー情報を登録してね
+        　<%= link_to "メンバー情報を登録する", edit_member_path(@member.id),class: "btn-so-pop" %>
+        <% elsif @target == nil %>
           <!--目標未登録の場合-->
           まずは今月の目標を登録してください
           <%= link_to "今月の目標を登録する", "targets/new", method: :get ,class: "btn-so-pop" %>
         <% else %>
+          <p>◎トピック</p>
           <!--目標登録済みの場合-->
           <il>
             <li>　今月は<%= @records.count %>件の記録があります</li>

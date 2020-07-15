@@ -15,7 +15,7 @@ class Record < ApplicationRecord
   end
   # 表示用種目
   def out_competition
-      edit_competition(competition)
+      edit_competition(raceflg, competition)
   end
   
   # タイム秒換算
@@ -23,7 +23,6 @@ class Record < ApplicationRecord
       return self.hour * 3600 + self.min * 60 + self.sec 
   end
     
-
    # 表示用タイムに前ゼロを付加
   def addzero(number_b)
     if number_b.to_i < 10 then
@@ -34,13 +33,15 @@ class Record < ApplicationRecord
     return number_a
   end  
   
-  def edit_competition(competition_b)
-    if competition_b == "1" then
-      competition_a = "フル" 
-    elsif competition_b == "2" then
-      competition_a = "ハーフ"
-    elsif competition_b == "0" then
-      competition_a = "その他"
+  def edit_competition(competition_b, raceflg_b)
+    if raceflg_b == "1" then
+      if competition_b == "1" then
+        competition_a = "フル" 
+      elsif competition_b == "2" then
+        competition_a = "ハーフ"
+      else 
+        competition_a = "その他"
+      end  
     else
       competition_a = "ー"
     end
@@ -52,7 +53,6 @@ class Record < ApplicationRecord
       return hh * 3600 + mm * 60 + ss 
   end
     
-  # ここから先は使っているか否か不明？
   # 月別アーカイブのメソッド
   # レコード総件数
   def d 

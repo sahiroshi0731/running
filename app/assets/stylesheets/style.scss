@@ -77,21 +77,22 @@ li {
     font-family: "ヒラギノ丸ゴ Pro W4";
 }
 .a2 {
-    margin-top: 20px;
+    margin: 20px 20px 20px 20px;
     background-color: #FFFAFA;
     display: flex;
     border: 2px solid #555;
     border-radius: 10px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.55);
 }
 .a2_1 {
-    width: 500px;
+    width: 400px;
     font-size: 1.1em;
     text-align: left;
     margin-left: 50px;
     line-height: 1.5em;
 }    
 .a2_2 {
-    width: 500px;
+    width: 400px;
     font-size: 0.8em;
     text-align: left;
     color: #000FFF;
@@ -100,9 +101,17 @@ li {
 }
 .a4 {
     margin-top: 20px;
-    width: 1000px;
+    width: 900px;
     font-size: 1.2em;
     margin-left: 100px;
+}
+.aa {
+  transition: all 1s;
+}
+/*カーソルが乗ったときの状態を指定*/
+.aa:hover{
+  background-color: #FFFF00;
+  font-size: 1.5em;
 }
 
 /*詳細表示*/
@@ -131,87 +140,62 @@ li {
 
 /*登録画面表示*/
 .registar {
-  padding: 10px 50px 30px 20px;
-  margin: 10px 50px 0px 30px;
-  background: #CCCCFF; 
+  width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #FFFFAA; /*黄色*/
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
   border-radius: 9px;
-  .headline {
-    background: #FFCC33;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
-  　border-radius: 9px;
-    p1 {
-      display: inline;
-      padding-right: 100px;
-      font-size: 2.0rem;
-      font-family: $fontw4;
-    }
-    p2 {
-      background: #FFCC33;
-      display: inline;
-      padding-left: 800px;
-      font-size: 1.0rem;
-    }
-  }
-  .input_area {
-    background: #FFDDFF;
-    .input {
-      padding: 0.1em 1em;
-      margin: 0.1em 0;
-      background: #FFFFEE;
-      font-size: 1.2rem;
-      .item{
-        padding: 0.1em 0.1em;
-        margin: 0.1em 0;
-      }
-      .item p{
-        margin: 0; 
-        padding: 0;
-      }
-      .text-center{
-           padding: 0.1em 0.1em;
-           margin: 0.1em 0.1em;
-           color: #5989cf;
-           background: #c6e4ff;
-           border-bottom: solid 6px #aac5de;
-           border-radius: 9px;
-      }
-    }
-  }
+  position: relative;
 }
 
-// ここから先は不要
-/*ログイン*/
-.login_back {
-  padding: 10px 50px 30px 20px;
-  margin: 50px 500px 0px 500px;
-  background: #CCCCFF; 
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
-  border-radius: 9px;
-  overflow: hidden;
-  .input_area {
+.headline {
+    width: 750px;
+    height: 60px;
+}
+
+.p1 {
+    font-size: 1.5rem;
+    font-family: $fontw4;
+    position: absolute;
+    top: 30px;
+    left: 50px;
+}
+.p2 {
+    width: 70px;
+    height: 30px;
+    font-size: 1.0rem;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
+.input_area {
+  background: #FFDDFF;
+}
+
+.input {
+    padding: 0.1em 1em;
+    margin: 0.1em 0;
     background: #FFFFEE;
-    .input {
-      padding: 0.1em 1em;
-      margin: 0.1em 0;
-      font-size: 1.2rem;
-      .item{
-        padding: 0.1em 0.1em;
-        margin: 0.1em 0;
-      }
-      .text-center{
-           padding: 0.1em 0.1em;
-           margin: 0.1em 0.1em;
-           color: #000000;
-           background: #c6e4ff;
-           border-bottom: solid 6px #aac5de;
-           border-radius: 9px;
-      }
-      .bb{
-        margin: 10px auto;
-        width: 100px;
-      }
-    }
-  }
-}    
-    
+    font-size: 1.2rem;
+}
+.item{
+    padding: 0.1em 0.1em;
+    margin: 0.1em 0;
+    font-size: 1.0rem;
+}
+.item p{
+    margin: 0; 
+    padding: 0;
+}
+.text-center{
+    padding: 0.1em 0.1em;
+    margin: 0.1em 0.1em;
+    color: #5989cf;
+    background: #c6e4ff;
+    border-bottom: solid 6px #aac5de;
+    border-radius: 9px;
+}
+
+

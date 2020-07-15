@@ -13,11 +13,15 @@ class Member < ApplicationRecord
         enrollment.strftime("%Y年%m月%d日")
     end
     
+    # 性別の表示
     def outsex
-        if sex =="M" then
-           return  "男性"
+        case sex
+        when "M"
+            return "男性"
+        when "W"
+            return "女性"
         else
-           return  "女性"
+           return  "未設定"
         end
     end
       # 表示用フルタイム
@@ -30,16 +34,16 @@ class Member < ApplicationRecord
         "#{halfhour}:#{addzero(halfmin)}:#{addzero(halfsec)}"
     end
     
-    # フル秒換算
-    def full_sumsec
-        # halfhour * 3600 + fullmin * 60 + fullsec
-        zszs(fullhour,fullmin,fullsec)
-    end
+    # # フル秒換算
+    # def full_sumsec
+    #     # halfhour * 3600 + fullmin * 60 + fullsec
+    #     zszs(fullhour,fullmin,fullsec)
+    # end
     
-    # ハーフ秒換算
-    def half_sumsec
-        zszs(halfhour,halfmin,halfsec)
-    end
+    # # ハーフ秒換算
+    # def half_sumsec
+    #     zszs(halfhour,halfmin,halfsec)
+    # end
     
     # フル秒換算
     def bestfull_sumsec
